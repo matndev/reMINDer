@@ -9,13 +9,13 @@
     "contextMenus"
   ],
   "background": {
-    "scripts": ["background.js"]
+    "scripts": ["js/background.js"]
   },
   "action": {
     "default_icon": {
-      "16": "icon16.png",
-      "48": "icon48.png",
-      "128": "icon128.png"
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
     }
   },
   "content_scripts": [
@@ -25,8 +25,8 @@
 		"https://chatgpt.com/*",
 		"https://claude.ai/*"
 	  ],
-      "js": ["content.js"],
-      "css": ["styles.css"],
+      "js": ["js/content.js", "js/sidebar.js", "js/highlight.js", "js/popup.js", "js/storage.js"],
+      "css": ["styles/styles.css"],
       "run_at": "document_start"
     }
   ],
