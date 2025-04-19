@@ -4,7 +4,8 @@ function createSidebar() {
     sidebar.id = "highlight-sidebar";
     sidebar.innerHTML = `
       <div class="sidebar-header">
-        Saved Highlights
+        <img src="${chrome.runtime.getURL('icons/icon48.png')}" class="sidebar-icon" alt="Icon" />
+        reMINDer
         <button class="circle-button" id="sidebar-toggle"><span class="arrow down"></span></button>
       </div>
       <div class="highlight-list"></div>

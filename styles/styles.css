@@ -37,9 +37,15 @@
   display: flex;
   justify-content: space-between;
   padding: 10px;
-  background: #007bff;
+  background: #555386;
   color: white;
   font-weight: bold;
+}
+
+.sidebar-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
 }
 
 .highlight-list {
