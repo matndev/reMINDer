@@ -1,5 +1,13 @@
+let appEnabled = true;
+const activeIcons = { 16: "icons/active_icon16.png", 48: "icons/active_icon48.png", 128: "icons/active_icon128.png" };
+const inactiveIcons = { 16: "icons/inactive_icon16.png", 48: "icons/inactive_icon48.png", 128: "icons/inactive_icon128.png" };
+
 chrome.action.onClicked.addListener((tab) => {
   chrome.tabs.sendMessage(tab.id, { action: "toggleEditorMode" });
+  appEnabled = !appEnabled;
+  chrome.action.setIcon({
+    path: appEnabled ? activeIcons : inactiveIcons
+  });
 });
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {

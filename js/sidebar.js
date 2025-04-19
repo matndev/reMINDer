@@ -4,7 +4,7 @@ function createSidebar() {
     sidebar.id = "highlight-sidebar";
     sidebar.innerHTML = `
       <div class="sidebar-header">
-        <img src="${chrome.runtime.getURL('icons/icon48.png')}" class="sidebar-icon" alt="Icon" />
+        <img src="${chrome.runtime.getURL('icons/active_icon48.png')}" class="sidebar-icon" alt="Icon" />
         reMINDer
         <button class="circle-button" id="sidebar-toggle"><span class="arrow down"></span></button>
       </div>
@@ -82,5 +82,5 @@ function removeToggleButton() {
     if (existingButton) {
       console.log("Removing toggle button with ID:", existingButton.id);
       existingButton.remove();
-    }
+  }
 }

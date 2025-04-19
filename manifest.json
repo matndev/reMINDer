@@ -13,31 +13,38 @@
   },
   "action": {
     "default_icon": {
-      "16": "icons/icon16.png",
-      "48": "icons/icon48.png",
-      "128": "icons/icon128.png"
+      "16": "icons/active_icon16.png",
+      "48": "icons/active_icon48.png",
+      "128": "icons/active_icon128.png"
     }
   },
   "content_scripts": [
     {
       "matches": [
-		"https://grok.com/*",
-		"https://chatgpt.com/*",
-		"https://claude.ai/*"
-	  ],
+        "https://grok.com/*",
+        "https://chatgpt.com/*",
+        "https://claude.ai/*"
+      ],
       "js": ["js/content.js", "js/sidebar.js", "js/highlight.js", "js/popup.js", "js/storage.js"],
       "css": ["styles/styles.css"],
       "run_at": "document_start"
     }
   ],
   "icons": {
-    "16": "icon16.png",
-    "48": "icon48.png",
-    "128": "icon128.png"
+    "16": "icons/active_icon16.png",
+    "48": "icons/active_icon48.png",
+    "128": "icons/active_icon128.png"
   },
   "web_accessible_resources": [
     {
-      "resources": [ "icons/icon48.png" ],
+      "resources": [
+        "icons/active_icon16.png",
+        "icons/active_icon48.png",
+        "icons/active_icon128.png",
+        "icons/inactive_icon16.png",
+        "icons/inactive_icon48.png",
+        "icons/inactive_icon128.png"
+      ],
       "matches": [ "https://*/*" ]
     }
   ]
