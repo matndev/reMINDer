@@ -39,6 +39,15 @@ function handleGlobalClick(event) {
         showCustomPopup();
       }
     }
+    else {
+      if (editorMode && document.querySelectorAll("#save-highlight-button").length > 0) {
+        const attributeName = 'data-highlight-id';
+        const attributeValue = highlightId;
+        document.querySelectorAll(`[${attributeName}="${attributeValue}"]`).forEach(element => {
+          element.replaceWith(...element.childNodes);
+        });
+      }
+    }
 }
   
 function showSaveButton(selection) {

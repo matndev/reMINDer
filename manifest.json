@@ -43,7 +43,8 @@
         "icons/active_icon128.png",
         "icons/inactive_icon16.png",
         "icons/inactive_icon48.png",
-        "icons/inactive_icon128.png"
+        "icons/inactive_icon128.png",
+        "icons/screenshot_region_24dp.svg"
       ],
       "matches": [ "https://*/*" ]
     }

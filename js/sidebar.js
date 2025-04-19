@@ -4,14 +4,22 @@ function createSidebar() {
     sidebar.id = "highlight-sidebar";
     sidebar.innerHTML = `
       <div class="sidebar-header">
-        <img src="${chrome.runtime.getURL('icons/active_icon48.png')}" class="sidebar-icon" alt="Icon" />
-        reMINDer
-        <button class="circle-button" id="sidebar-toggle"><span class="arrow down"></span></button>
+        <div class="sidebar-header-title">
+          <img src="${chrome.runtime.getURL('icons/active_icon48.png')}" class="sidebar-icon" alt="Icon" />
+          reMINDer
+        </div>
+        <div class="sidebar-header-buttons">
+          <button class="circle-button" id="enable-editor-mode-button">
+            <img src="${chrome.runtime.getURL("icons/screenshot_region_24dp.svg")}" alt="capture text" width="24" height="24" />
+          </button>
+          <button class="circle-button" id="sidebar-toggle"><span class="arrow down"></span></button>
+        </div>
       </div>
       <div class="highlight-list"></div>
     `;
     document.body.appendChild(sidebar);
     sidebar.querySelector("#sidebar-toggle").addEventListener("click", toggleSidebar);
+    sidebar.querySelector("#enable-editor-mode-button").addEventListener("click", toggleEditorMode);
     chrome.storage.local.get(["highlights"], (result) => {
       updateSidebar(result.highlights || []);
     });
@@ -82,5 +90,13 @@ function removeToggleButton() {
     if (existingButton) {
       console.log("Removing toggle button with ID:", existingButton.id);
       existingButton.remove();
+    }
+}
+
+function disableSidebar() {
+  if (isSidebarVisible && sidebar) {
+      sidebar.style.display = "none";
+      removeToggleButton();
+      isSidebarVisible = false;
   }
 }

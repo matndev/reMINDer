@@ -42,6 +42,16 @@
   font-weight: bold;
 }
 
+.sidebar-header-title {
+  display: flex;
+  gap: 5px;
+}
+
+.sidebar-header-buttons {
+  display: flex;
+  gap: 5px;
+}
+
 .sidebar-icon {
   width: 24px;
   height: 24px;
@@ -141,6 +151,5 @@
 }
 
 [data-highlight-id] {
-  /* Border for debug, disabled by default */
-  /* border: 1px dashed #007bff; */
+  background-color: yellow;
 }

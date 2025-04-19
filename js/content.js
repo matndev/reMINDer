@@ -6,25 +6,39 @@ let isSidebarVisible = false;
 let highlightId = null;
 let lastSelectedText = ""; // Avoid ID regeneration
 
+/**
+ * On toolbar button click
+ */
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  console.log("Message received:", message, editorMode);
-  if (message.action === "toggleEditorMode") {
-    editorMode = !editorMode;
-    if (editorMode) {
-      enableEditorMode();
-    } else {
-      disableEditorMode();
-    }
-  } else if (message.action === "updateHighlights") {
+  if (message.action === "updateHighlights") {
     updateSidebar(message.highlights);
   }
+  if (message.action === "toggleApp") {
+    message.appEnabled ? disableApp() : enableApp();
+  }
 });
+
+function enableApp() {
+  createToggleButton();
+}
+
+function disableApp() {
+  editorMode = false;
+  disableEditorMode();
+  disableSidebar();
+  removeToggleButton();
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   console.log("Page loaded, showing toggle button");
   createToggleButton();
   restoreHighlightIds();
 });
+
+function toggleEditorMode() {
+  editorMode ? disableEditorMode() : enableEditorMode();
+  editorMode = !editorMode;
+}
 
 function enableEditorMode() {
   console.log("Enabling editor mode");

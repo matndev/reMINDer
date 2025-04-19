@@ -3,7 +3,7 @@ const activeIcons = { 16: "icons/active_icon16.png", 48: "icons/active_icon48.pn
 const inactiveIcons = { 16: "icons/inactive_icon16.png", 48: "icons/inactive_icon48.png", 128: "icons/inactive_icon128.png" };
 
 chrome.action.onClicked.addListener((tab) => {
-  chrome.tabs.sendMessage(tab.id, { action: "toggleEditorMode" });
+  chrome.tabs.sendMessage(tab.id, { action: "toggleApp", appEnabled });
   appEnabled = !appEnabled;
   chrome.action.setIcon({
     path: appEnabled ? activeIcons : inactiveIcons
