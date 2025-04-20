@@ -36,7 +36,7 @@ function updateSidebar(highlights) {
       item.innerHTML = `
         <summary>${highlight.title}</summary>
         <div class="highlight-content">${highlight.content}</div>
-        <div class="highlight-ref">Saved from: <a href="${linkUrl}" class="highlight-link">${linkUrl}</a></div>
+        <div class="highlight-ref"><a href="${linkUrl}" class="highlight-link">Go to reference</a></div>
       `;
       list.appendChild(item);
       // Listener for scrolling

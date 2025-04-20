@@ -37,13 +37,14 @@
   display: flex;
   justify-content: space-between;
   padding: 10px;
-  background: #555386;
-  color: white;
+  background: white;
+  color: #1d1c1b;
   font-weight: bold;
 }
 
 .sidebar-header-title {
   display: flex;
+  align-items: center;
   gap: 5px;
 }
 
@@ -124,12 +125,12 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   background: white;
   text-decoration: none;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  box-shadow: 0 0px 2px rgba(0,0,0,0.2);
   cursor: pointer;
 }
 
