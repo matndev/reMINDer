@@ -31,9 +31,25 @@ function disableApp() {
 
 document.addEventListener("DOMContentLoaded", () => {
   createToggleButton();
-  window.addEventListener("load", () => {
-    setTimeout(restoreHighlightIds, 1000);
+
+  // temp solution : Stabilize DOM, check mutations under 1s and reload
+  let timeout;
+  const observer = new MutationObserver(() => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      // No more mutations
+      restoreHighlightIds();
+      observer.disconnect();
+    }, 1000);
   });
+  observer.observe(document.body, { childList: true, subtree: true });
+  // Fallback after 10s
+  setTimeout(() => {
+    if (timeout) {
+      restoreHighlightIds();
+      observer.disconnect();
+    }
+  }, 10000);
 });
 
 function toggleEditorMode() {
