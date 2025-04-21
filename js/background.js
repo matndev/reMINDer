@@ -20,7 +20,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         content: message.content,
         url: message.url,
         highlightId: message.highlightId,
-        contentSnippet: message.contentSnippet, // Extract for identification
+        contentSnippet: message.contentSnippet,
         timestamp: new Date().toISOString()
       });
       chrome.storage.local.set({ highlights }, () => {

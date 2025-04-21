@@ -71,6 +71,10 @@
   padding: 5px;
 }
 
+.highlight-item.disabled {
+  background: #d3d3d3; /* Fond gris pour orphelins */
+}
+
 .highlight-item summary {
   cursor: pointer;
   padding: 5px;

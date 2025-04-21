@@ -4,7 +4,7 @@ let selectedText = "";
 let toggleButton = null;
 let isSidebarVisible = false;
 let highlightId = null;
-let lastSelectedText = ""; // Avoid ID regeneration
+let lastSelectedText = "";
 
 /**
  * On toolbar button click
@@ -30,9 +30,10 @@ function disableApp() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("Page loaded, showing toggle button");
   createToggleButton();
-  restoreHighlightIds();
+  window.addEventListener("load", () => {
+    setTimeout(restoreHighlightIds, 1000);
+  });
 });
 
 function toggleEditorMode() {
@@ -41,7 +42,6 @@ function toggleEditorMode() {
 }
 
 function enableEditorMode() {
-  console.log("Enabling editor mode");
   document.body.classList.add("highlight-mode");
   if (!sidebar && isSidebarVisible) {
     createSidebar();
@@ -58,7 +58,6 @@ function enableEditorMode() {
 }
 
 function disableEditorMode() {
-  console.log("Disabling editor mode");
   document.body.classList.remove("highlight-mode");
   document.removeEventListener("mouseup", handleTextSelection);
   document.removeEventListener("click", handleGlobalClick);
