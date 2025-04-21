@@ -30,14 +30,18 @@ function updateSidebar(highlights) {
   highlights.forEach((highlight) => {
     const item = document.createElement("details");
     item.className = "highlight-item";
-
     const isOrphan = highlight.highlightId && !document.querySelector(`[data-highlight-id="${highlight.highlightId}"]`);
     if (isOrphan) {
       item.classList.add("disabled");
     }
     const linkUrl = highlight.highlightId ? `${highlight.url}#highlight-${highlight.highlightId}` : highlight.url;
     item.innerHTML = `
-      <summary>${highlight.title}</summary>
+      <summary>
+        ${highlight.title}
+        <button class="delete-button" data-highlight-id="${highlight.highlightId}" title="Delete highlight">
+          <img src="${chrome.runtime.getURL('icons/delete_24dp.svg')}" alt="Delete" width="24" height="24" />
+        </button>
+      </summary>
       <div class="highlight-content">${highlight.content}</div>
       <div class="highlight-ref">(Experimental feature) <a href="${linkUrl}" class="highlight-link">Go to reference</a></div>
     `;
@@ -54,6 +58,19 @@ function updateSidebar(highlights) {
       } else {
         window.location.href = highlight.url;
       }
+    });
+    item.querySelector(".delete-button").addEventListener("click", () => {
+      chrome.storage.local.get(["highlights"], (result) => {
+        let highlights = result.highlights || [];
+        highlights = highlights.filter(h => h.highlightId !== highlight.highlightId);
+        chrome.storage.local.set({ highlights }, () => {
+          const span = document.querySelector(`[data-highlight-id="${highlight.highlightId}"]`);
+          if (span) {
+            span.replaceWith(...span.childNodes);
+          }
+          updateSidebar(highlights);
+        });
+      });
     });
   });
 }

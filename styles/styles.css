@@ -72,13 +72,28 @@
 }
 
 .highlight-item.disabled {
-  background: #d3d3d3; /* Fond gris pour orphelins */
+  background: #d3d3d3;
 }
 
 .highlight-item summary {
   cursor: pointer;
   padding: 5px;
   font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.delete-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px;
+}
+
+.delete-button:hover {
+  background: #f0f0f0;
+  border-radius: 4px;
 }
 
 .highlight-content {
@@ -159,6 +174,6 @@
   margin-top: -2px;
 }
 
-[data-highlight-id] {
+span[data-highlight-id] {
   background-color: yellow;
 }
