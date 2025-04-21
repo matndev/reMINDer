@@ -1,3 +1,15 @@
+/**
+ * reMINDer - Highlight Script
+ * Author: matndev
+ * License: MIT
+ * Last Modified: April 21, 2025
+ * Description: Handles text selection, highlighting, and save button display.
+ */
+
+/**
+ * Processes text selection events and wraps selected text in a <span> element.
+ * @param {Event} event - The mouseup event.
+ */
 function handleTextSelection(event) {
   if (event.target.closest("#save-highlight-button")) {
     console.log("Ignoring mouseup from Save Highlight button");
@@ -25,6 +37,10 @@ function handleTextSelection(event) {
   }, 100);
 }
 
+/**
+ * Handles global click events to show the save popup or remove highlights.
+ * @param {Event} event - The click event.
+ */
 function handleGlobalClick(event) {
   const button = event.target.closest("#save-highlight-button");
   if (button) {
@@ -44,6 +60,10 @@ function handleGlobalClick(event) {
   }
 }
 
+/**
+ * Displays the save button near the selected text.
+ * @param {Selection} selection - The current text selection.
+ */
 function showSaveButton(selection) {
   removeExistingSaveButton();
   const range = selection.getRangeAt(0);
@@ -64,6 +84,9 @@ function showSaveButton(selection) {
   document.body.appendChild(button);
 }
 
+/**
+ * Removes any existing save buttons from the DOM.
+ */
 function removeExistingSaveButton() {
   const buttons = document.querySelectorAll("#save-highlight-button");
   buttons.forEach((button) => {

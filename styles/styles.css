@@ -1,3 +1,11 @@
+/**
+ * reMINDer - Stylesheet
+ * Author: matndev
+ * License: MIT
+ * Last Modified: April 21, 2025
+ * Description: Defines styles for the reMINDer extension's UI, including sidebar, buttons, and highlights.
+ */
+
 .highlight-mode {
   cursor: crosshair;
 }

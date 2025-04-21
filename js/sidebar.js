@@ -1,3 +1,14 @@
+/**
+ * reMINDer - Sidebar Script
+ * Author: matndev
+ * License: MIT
+ * Last Modified: April 21, 2025
+ * Description: Manages the sidebar UI for displaying and deleting highlights.
+ */
+
+/**
+ * Creates the sidebar UI with header, toggle button, and highlight list.
+ */
 function createSidebar() {
   sidebar = document.createElement("div");
   sidebar.id = "highlight-sidebar";
@@ -24,6 +35,10 @@ function createSidebar() {
   });
 }
 
+/**
+ * Updates the sidebar with the list of saved highlights, including delete buttons.
+ * @param {Array} highlights - Array of highlight objects.
+ */
 function updateSidebar(highlights) {
   const list = sidebar.querySelector(".highlight-list");
   list.innerHTML = "";
@@ -75,6 +90,9 @@ function updateSidebar(highlights) {
   });
 }
 
+/**
+ * Toggles the visibility of the sidebar.
+ */
 function toggleSidebar() {
   if (isSidebarVisible) {
     if (sidebar) {
@@ -92,6 +110,9 @@ function toggleSidebar() {
   }
 }
 
+/**
+ * Creates the toggle button for the sidebar.
+ */
 function createToggleButton() {
   removeToggleButton();
   toggleButton = document.createElement("button");
@@ -101,6 +122,9 @@ function createToggleButton() {
   document.body.appendChild(toggleButton);
 }
 
+/**
+ * Removes the existing toggle button from the DOM.
+ */
 function removeToggleButton() {
   const existingButton = document.getElementById("toggle-button");
   if (existingButton) {
@@ -108,6 +132,9 @@ function removeToggleButton() {
   }
 }
 
+/**
+ * Disables the sidebar and removes the toggle button.
+ */
 function disableSidebar() {
   if (isSidebarVisible && sidebar) {
     sidebar.style.display = "none";

@@ -1,4 +1,9 @@
 {
+  "//": "reMINDer - Chrome Extension Manifest",
+  "//": "Author: matndev",
+  "//": "License: MIT",
+  "//": "Last Modified: April 21, 2025",
+  "//": "Description: Configuration file for the reMINDer Chrome extension to highlight and save parts of AI conversations.",
   "manifest_version": 3,
   "name": "reMINDer",
   "version": "1.0",

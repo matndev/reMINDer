@@ -1,3 +1,11 @@
+/**
+ * reMINDer - Content Script
+ * Author: matndev
+ * License: MIT
+ * Last Modified: April 21, 2025
+ * Description: Initializes the extension's UI and handles editor mode, sidebar, and highlight restoration.
+ */
+
 let editorMode = false;
 let sidebar = null;
 let selectedText = "";
@@ -7,7 +15,10 @@ let highlightId = null;
 let lastSelectedText = "";
 
 /**
- * On toolbar button click
+ * Handles messages from the background script to update highlights or toggle the app.
+ * @param {Object} message - The message object containing action and data.
+ * @param {Object} sender - The sender of the message.
+ * @param {Function} sendResponse - Callback to send a response.
  */
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.action === "updateHighlights") {
@@ -18,10 +29,16 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   }
 });
 
+/**
+ * Enables the extension by creating the toggle button.
+ */
 function enableApp() {
   createToggleButton();
 }
 
+/**
+ * Disables the extension by resetting editor mode and removing UI elements.
+ */
 function disableApp() {
   editorMode = false;
   disableEditorMode();
@@ -29,6 +46,9 @@ function disableApp() {
   removeToggleButton();
 }
 
+/**
+ * Initializes the toggle button and sets up DOM stabilization observer for highlight restoration.
+ */
 document.addEventListener("DOMContentLoaded", () => {
   createToggleButton();
 
@@ -52,11 +72,17 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 10000);
 });
 
+/**
+ * Toggles the editor mode on or off.
+ */
 function toggleEditorMode() {
   editorMode ? disableEditorMode() : enableEditorMode();
   editorMode = !editorMode;
 }
 
+/**
+ * Enables editor mode, activating text selection and sidebar.
+ */
 function enableEditorMode() {
   document.body.classList.add("highlight-mode");
   if (!sidebar && isSidebarVisible) {
@@ -73,6 +99,9 @@ function enableEditorMode() {
   document.addEventListener("click", handleGlobalClick);
 }
 
+/**
+ * Disables editor mode, removing text selection listeners and UI elements.
+ */
 function disableEditorMode() {
   document.body.classList.remove("highlight-mode");
   document.removeEventListener("mouseup", handleTextSelection);

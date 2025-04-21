@@ -1,3 +1,14 @@
+/**
+ * reMINDer - Storage Script
+ * Author: matndev
+ * License: MIT
+ * Last Modified: April 21, 2025
+ * Description: Restores highlights by wrapping saved text in <span> elements on page load.
+ */
+
+/**
+ * Restores highlights by searching for saved text in the DOM and wrapping it with <span> elements.
+ */
 function restoreHighlightIds() {
   chrome.storage.local.get(["highlights"], result => {
 

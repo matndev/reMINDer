@@ -1,3 +1,14 @@
+/**
+ * reMINDer - Popup Script
+ * Author: matndev
+ * License: MIT
+ * Last Modified: April 21, 2025
+ * Description: Manages the popup UI for saving highlights with custom titles.
+ */
+
+/**
+ * Displays a popup for entering a highlight title and saves the highlight.
+ */
 function showCustomPopup() {
   removeExistingSaveButton();
   removeExistingPopup();
@@ -58,6 +69,9 @@ function showCustomPopup() {
   });
 }
 
+/**
+ * Removes the existing highlight popup if present.
+ */
 function removeExistingPopup() {
   const existingPopup = document.getElementById("highlight-popup");
   if (existingPopup) {
