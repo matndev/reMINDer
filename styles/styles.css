@@ -134,6 +134,10 @@
   cursor: pointer;
 }
 
+.circle-button.active {
+  background: #007bff;
+}
+
 .arrow {
   width: 8px;
   height: 8px;

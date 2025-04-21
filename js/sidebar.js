@@ -9,8 +9,8 @@ function createSidebar() {
           reMINDer
         </div>
         <div class="sidebar-header-buttons">
-          <button class="circle-button" id="enable-editor-mode-button">
-            <img src="${chrome.runtime.getURL("icons/screenshot_region_24dp.svg")}" alt="capture text" width="24" height="24" />
+        <button class="circle-button ${editorMode ? 'active' : ''}" id="enable-editor-mode-button">
+          <img src="${chrome.runtime.getURL('icons/screenshot_region_24dp.svg')}" alt="capture text" width="24" height="24" />
           </button>
           <button class="circle-button" id="sidebar-toggle"><span class="arrow down"></span></button>
         </div>

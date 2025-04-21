@@ -48,6 +48,10 @@ function enableEditorMode() {
   }
   if (sidebar) {
     sidebar.style.display = "block";
+    const editorButton = sidebar.querySelector("#enable-editor-mode-button");
+    if (editorButton) {
+      editorButton.classList.add("active");
+    }
   }
   document.addEventListener("mouseup", handleTextSelection);
   document.addEventListener("click", handleGlobalClick);
@@ -60,4 +64,10 @@ function disableEditorMode() {
   document.removeEventListener("click", handleGlobalClick);
   removeExistingSaveButton();
   removeExistingPopup();
+  if (sidebar) {
+    const editorButton = sidebar.querySelector("#enable-editor-mode-button");
+    if (editorButton) {
+      editorButton.classList.remove("active");
+    }
+  }
 }
